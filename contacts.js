@@ -6,6 +6,19 @@ const contactsPath = path.format({
   base: "contacts.json",
 });
 
+const idGenerator = () => {
+  const symbols =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
+  let randomId = "";
+
+  for (let i = 1; i <= 21; i++) {
+    const cryptoKey = Math.ceil(Math.random() * 65);
+    randomId += symbols[cryptoKey];
+  }
+
+  return randomId;
+};
+
 async function listContacts() {
   try {
     const byteQueue = await fs.readFile(contactsPath);
@@ -54,7 +67,7 @@ async function removeContact(contactId) {
 
 async function addContact(name, email, phone) {
   const newContact = {
-    id: "example-id",
+    id: idGenerator(),
     name,
     email,
     phone,
