@@ -12,7 +12,7 @@ const idGenerator = () => {
   let randomId = "";
 
   for (let i = 1; i <= 21; i++) {
-    const cryptoKey = Math.ceil(Math.random() * 65);
+    const cryptoKey = Math.ceil(Math.random() * symbols.length);
     randomId += symbols[cryptoKey];
   }
 
