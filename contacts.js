@@ -1,23 +1,11 @@
 const fs = require("fs").promises;
 const path = require("path");
+const idGenerator = require("./own_modules/idGenerator");
 
 const contactsPath = path.format({
-  dir: "A:\\Projects\\GoIT-homeworks\\Node.js\\cli-app\\db",
+  dir: `${__dirname}\\db`,
   base: "contacts.json",
 });
-
-const idGenerator = () => {
-  const symbols =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
-  let randomId = "";
-
-  for (let i = 1; i <= 21; i++) {
-    const cryptoKey = Math.ceil(Math.random() * symbols.length);
-    randomId += symbols[cryptoKey];
-  }
-
-  return randomId;
-};
 
 async function listContacts() {
   try {
